@@ -1,0 +1,1 @@
+{"properties": {"id": 118822, "unknown_19": 1, "width": 2, "floor_decoration_object_is_walkable": false, "model": false, "unknown_196": 4, "scaleX": 210, "scaleY": 210, "scaleZ": 210, "models": [{"type": 10, "values": [103661]}], "name": "Netting", "occludes_2": false}, "uniques": [{"plane": 0, "i": 77, "j": 154, "x": 60, "y": 24, "id": 118822, "type": 11, "rotation": 0}]}

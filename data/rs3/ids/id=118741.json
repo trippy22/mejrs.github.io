@@ -1,0 +1,1 @@
+{"properties": {"id": 118741, "ambient": 0, "unknown_19": 1, "actions": ["Knock", null, null, null, null], "models": [{"type": 0, "values": [69572]}], "name": "Door", "occludes_2": false}, "uniques": [{"plane": 0, "i": 80, "j": 155, "x": 34, "y": 32, "id": 118741, "type": 0, "rotation": 1}]}

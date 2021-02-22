@@ -1,0 +1,1 @@
+{"properties": {"id": 119285, "unknown_19": 1, "floor_decoration_object_is_walkable": false, "ambient": 25, "actions": ["Pull", null, null, null, null], "dummy_45": 11, "is_transparent": true, "models": [{"type": 10, "values": [17405]}], "name": "Lever", "occludes_2": false}, "uniques": [{"plane": 0, "i": 20, "j": 105, "x": 43, "y": 38, "id": 119285, "type": 10, "rotation": 2}]}

@@ -1,0 +1,1 @@
+{"properties": {"id": 118899, "width": 2, "length": 2, "floor_decoration_object_is_walkable": false, "ambient": 20, "scaleX": 180, "scaleY": 180, "scaleZ": 180, "models": [{"type": 10, "values": [108415]}], "name": "2011 Nex statue", "occludes_2": false}, "uniques": [{"plane": 0, "i": 49, "j": 50, "x": 10, "y": 24, "id": 118899, "type": 11, "rotation": 1}]}

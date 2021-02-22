@@ -1,0 +1,1 @@
+{"properties": {"id": 119154, "unknown_19": 1, "ambient": 0, "floor_decoration_object_is_walkable": false, "model": false, "is_transparent": true, "models": [{"type": 10, "values": [69658]}], "name": "Toybox", "occludes_2": false}, "uniques": [{"plane": 0, "i": 7, "j": 10, "x": 30, "y": 25, "id": 119154, "type": 11, "rotation": 2}]}

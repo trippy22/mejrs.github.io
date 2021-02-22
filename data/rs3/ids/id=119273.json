@@ -1,0 +1,1 @@
+{"properties": {"id": 119273, "floor_decoration_object_is_walkable": false, "actions": ["Search", null, null, null, null], "models": [{"type": 10, "values": [74102]}], "name": "Crate", "action_cursors": [56, null, null, null, null, null], "occludes_2": false}, "uniques": [{"plane": 0, "i": 19, "j": 105, "x": 43, "y": 39, "id": 119273, "type": 10, "rotation": 1}]}

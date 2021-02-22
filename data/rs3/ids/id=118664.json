@@ -1,0 +1,1 @@
+{"properties": {"id": 118664, "unknown_19": 1, "ambient": 0, "length": 2, "width": 2, "floor_decoration_object_is_walkable": false, "model": false, "unknown_196": 4, "models": [{"type": 10, "values": [69477, 69480, 121023]}], "name": "Well", "occludes_2": false}, "uniques": [{"plane": 0, "i": 80, "j": 155, "x": 41, "y": 27, "id": 118664, "type": 11, "rotation": 3}]}

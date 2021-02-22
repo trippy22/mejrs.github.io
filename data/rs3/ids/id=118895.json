@@ -1,0 +1,1 @@
+{"properties": {"id": 118895, "width": 2, "length": 3, "floor_decoration_object_is_walkable": false, "ambient": 20, "models": [{"type": 10, "values": [108413]}], "name": "2007 Fremennik Longboat statue", "occludes_2": false}, "uniques": [{"plane": 0, "i": 49, "j": 50, "x": 37, "y": 11, "id": 118895, "type": 10, "rotation": 1}]}

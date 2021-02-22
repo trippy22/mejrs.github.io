@@ -1,0 +1,1 @@
+{"properties": {"id": 119286, "unknown_19": 0, "dummy_bc": true, "width": 3, "length": 3, "textures": [{"original": 12881, "replacement": 13411}], "models": [{"type": 10, "values": [121404, 121403]}], "occludes_2": false}, "uniques": [{"plane": 0, "i": 20, "j": 105, "x": 30, "y": 11, "id": 119286, "type": 10, "rotation": 0}]}

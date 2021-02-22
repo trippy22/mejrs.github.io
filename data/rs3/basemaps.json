@@ -13176,6 +13176,78 @@
     "name": "Dig Site: Warforge"
   },
   {
+    "mapId": 731,
+    "bounds": [
+      [
+        0,
+        0
+      ],
+      [
+        384,
+        448
+      ]
+    ],
+    "center": [
+      192,
+      224
+    ],
+    "name": "Dig Site: Orthen"
+  },
+  {
+    "mapId": 732,
+    "bounds": [
+      [
+        0,
+        256
+      ],
+      [
+        320,
+        448
+      ]
+    ],
+    "center": [
+      160,
+      352
+    ],
+    "name": "Dig Site: Orthen"
+  },
+  {
+    "mapId": 733,
+    "bounds": [
+      [
+        0,
+        64
+      ],
+      [
+        320,
+        448
+      ]
+    ],
+    "center": [
+      160,
+      256
+    ],
+    "name": "Dig Site: Orthen"
+  },
+  {
+    "mapId": 734,
+    "bounds": [
+      [
+        5696,
+        2816
+      ],
+      [
+        5824,
+        2880
+      ]
+    ],
+    "center": [
+      5760,
+      2848
+    ],
+    "name": "Orthen Oubliette"
+  },
+  {
     "mapId": 10000,
     "bounds": [
       [

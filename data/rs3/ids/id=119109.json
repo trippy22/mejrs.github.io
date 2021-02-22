@@ -1,0 +1,1 @@
+{"properties": {"id": 119109, "unknown_19": 0, "standard_object_is_blocking": false, "model": false, "models": [{"type": 10, "values": [121246]}], "unknown_186": 2, "occludes_2": false}, "uniques": [{"plane": 0, "i": 7, "j": 10, "x": 40, "y": 36, "id": 119109, "type": 11, "rotation": 3}, {"plane": 1, "i": 7, "j": 10, "x": 26, "y": 35, "id": 119109, "type": 10, "rotation": 2}]}

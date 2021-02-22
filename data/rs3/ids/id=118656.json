@@ -1,0 +1,1 @@
+{"properties": {"id": 118656, "unknown_19": 0, "ambient": 0, "length": 4, "width": 4, "floor_decoration_object_is_walkable": false, "model": false, "unknown_196": 4, "translateY": 240, "models": [{"type": 10, "values": [69469, 121022]}], "occludes_2": false}, "uniques": [{"plane": 0, "i": 80, "j": 155, "x": 25, "y": 13, "id": 118656, "type": 10, "rotation": 3}]}

@@ -1,0 +1,1 @@
+{"properties": {"id": 118902, "width": 2, "length": 2, "floor_decoration_object_is_walkable": false, "ambient": 20, "models": [{"type": 10, "values": [108421]}], "name": "2014 Prifddinas statue", "occludes_2": false}, "uniques": [{"plane": 0, "i": 49, "j": 50, "x": 22, "y": 49, "id": 118902, "type": 11, "rotation": 2}]}

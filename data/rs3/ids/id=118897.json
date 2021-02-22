@@ -1,0 +1,1 @@
+{"properties": {"id": 118897, "width": 2, "length": 2, "floor_decoration_object_is_walkable": false, "ambient": 20, "models": [{"type": 10, "values": [108410]}], "name": "2009 Evil Tree statue", "occludes_2": false}, "uniques": [{"plane": 0, "i": 49, "j": 50, "x": 20, "y": 14, "id": 118897, "type": 11, "rotation": 1}]}

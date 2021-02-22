@@ -1,0 +1,1 @@
+{"properties": {"id": 119138, "unknown_19": 1, "ambient": 0, "width": 5, "standard_object_is_blocking": false, "model": false, "morphs_1": {"varbit": 22155, "varp": -1, "ids": [119139]}}, "uniques": [{"plane": 0, "i": 50, "j": 53, "x": 17, "y": 1, "id": 119138, "type": 10, "rotation": 0}, {"plane": 0, "i": 50, "j": 53, "x": 18, "y": 11, "id": 119138, "type": 10, "rotation": 2}]}

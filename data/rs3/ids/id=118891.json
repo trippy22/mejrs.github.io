@@ -1,0 +1,1 @@
+{"properties": {"id": 118891, "width": 2, "length": 2, "floor_decoration_object_is_walkable": false, "ambient": 20, "models": [{"type": 10, "values": [108405]}], "name": "2003 mage arena staff barrel statue", "occludes_2": false}, "uniques": [{"plane": 0, "i": 49, "j": 50, "x": 49, "y": 42, "id": 118891, "type": 10, "rotation": 3}]}

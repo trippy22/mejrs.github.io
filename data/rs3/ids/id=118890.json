@@ -1,0 +1,1 @@
+{"properties": {"id": 118890, "width": 2, "length": 2, "floor_decoration_object_is_walkable": false, "ambient": 20, "models": [{"type": 10, "values": [108412]}], "name": "2002 King Black Dragon statue", "occludes_2": false}, "uniques": [{"plane": 0, "i": 49, "j": 50, "x": 43, "y": 47, "id": 118890, "type": 11, "rotation": 3}]}
