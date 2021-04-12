@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["LineShape","An iterator that given a shape and `tilesize`, yields which pixels should be coloured."]]});

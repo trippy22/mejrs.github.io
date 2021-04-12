@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["export","Save the maplabels as `maplabels.json`. Exposed as `--dump maplabels`."]],"struct":[["LegacySwitch","Whether to show “new” or “legacy” map icon."],["MapLabelConfig","Map element on the ingame world map."],["Polygon","A polygon"],["PolygonPoint","Points that span a [`Polygon`]."],["Toggle","Controls whether the [`MapLabelConfig`] is shown."]]});

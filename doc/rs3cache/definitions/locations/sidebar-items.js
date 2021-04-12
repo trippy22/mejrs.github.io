@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Watery","Describes whether this location is on the contained plane."]],"fn":[["export","Saves all occurences of every object id as a `json` file to the folder `out/data/rs3/locations`."]],"struct":[["Location","A location, also referred to as an “object”."]]});

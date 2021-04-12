@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["OverlayShape","An iterator that given a shape and tilesize, yields which pixels should be coloured."],["UnderlayShape","An iterator that given a shape and tilesize, yields which pixels should not be coloured."]]});

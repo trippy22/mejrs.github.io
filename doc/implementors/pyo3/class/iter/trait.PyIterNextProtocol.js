@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["rs3cache"] = [{"text":"impl&lt;'p&gt; PyIterNextProtocol&lt;'p&gt; for <a class=\"struct\" href=\"rs3cache/ffi/python/struct.PyCacheIndexIter.html\" title=\"struct rs3cache::ffi::python::PyCacheIndexIter\">PyCacheIndexIter</a>","synthetic":false,"types":["rs3cache::ffi::python::PyCacheIndexIter"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

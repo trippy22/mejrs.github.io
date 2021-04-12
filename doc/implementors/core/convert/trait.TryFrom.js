@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["rs3cache"] = [{"text":"impl <a class=\"trait\" href=\"https://doc.rust-lang.org/nightly/core/convert/trait.TryFrom.html\" title=\"trait core::convert::TryFrom\">TryFrom</a>&lt;<a class=\"primitive\" href=\"https://doc.rust-lang.org/nightly/std/primitive.u32.html\">u32</a>&gt; for <a class=\"struct\" href=\"rs3cache/types/coordinate/struct.Coordinate.html\" title=\"struct rs3cache::types::coordinate::Coordinate\">Coordinate</a>","synthetic":false,"types":["rs3cache::types::coordinate::Coordinate"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

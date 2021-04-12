@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ConfigType","Enumeration of all archives in the Config (2) index."],["IndexType","Enumeration of all index types."]]});

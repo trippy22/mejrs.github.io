@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Overlay","Describes (part of) ground colour."]]});
