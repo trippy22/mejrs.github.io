@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["diff","Checks which archives are less that two weeks old."]]});

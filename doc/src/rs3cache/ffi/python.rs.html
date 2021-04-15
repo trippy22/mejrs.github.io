@@ -230,7 +230,6 @@
 <span id="227">227</span>
 <span id="228">228</span>
 <span id="229">229</span>
-<span id="230">230</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! Python bindings for `rs3cache`.</span>
 <span class="doccomment">//!</span>
@@ -307,6 +306,12 @@
 
 <span class="doccomment">/// Container of [`PyMapSquare`]s.</span>
 <span class="doccomment">/// Accessible with `from rs3cache import MapSquares`.</span>
+<span class="doccomment">/// # Example</span>
+<span class="doccomment">/// ```python</span>
+<span class="doccomment">/// from rs3cache import *</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// mapsquares = MapSquares()</span>
+<span class="doccomment">///```</span>
 <span class="attribute">#[<span class="ident">pyclass</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;MapSquares&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PyMapSquares</span> {
     <span class="ident">index</span>: <span class="ident">CacheIndex</span><span class="op">&lt;</span><span class="ident">Initial</span><span class="op">&gt;</span>,
@@ -314,15 +319,8 @@
 
 <span class="attribute">#[<span class="ident">pymethods</span>]</span>
 <span class="kw">impl</span> <span class="ident">PyMapSquares</span> {
-    <span class="doccomment">/// Constructor for MapSquares.</span>
-    <span class="doccomment">/// # Example</span>
-    <span class="doccomment">/// ```python</span>
-    <span class="doccomment">/// from rs3cache import *</span>
-    <span class="doccomment">///</span>
-    <span class="doccomment">/// mapsquares = MapSquares()</span>
-    <span class="doccomment">///```</span>
     <span class="attribute">#[<span class="ident">new</span>]</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PyResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PyResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="prelude-val">Ok</span>(<span class="self">Self</span> {
             <span class="ident">index</span>: <span class="ident">CacheIndex</span>::<span class="ident">new</span>(<span class="ident">IndexType</span>::<span class="ident">MAPSV2</span>)<span class="question-mark">?</span>,
         })
@@ -367,7 +365,7 @@
         <span class="prelude-val">Ok</span>(<span class="ident">locs</span>)
     }
 
-    <span class="doccomment">/// The [`Location`]s in a mapsquare.</span>
+    <span class="doccomment">/// The water [`Location`]s in a mapsquare.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">water_locations</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PyResult</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Location</span><span class="op">&gt;</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">locs</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">inner</span>.<span class="ident">get_water_locations</span>()<span class="question-mark">?</span>.<span class="ident">clone</span>();
         <span class="prelude-val">Ok</span>(<span class="ident">locs</span>)
@@ -411,7 +409,7 @@
 <span class="kw">impl</span> <span class="ident">PyCacheIndex</span> {
     <span class="attribute">#[<span class="ident">new</span>]</span>
     <span class="doccomment">/// Constructor of [`PyCacheIndex`].</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">index_id</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PyResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">index_id</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">PyResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="prelude-val">Ok</span>(<span class="self">Self</span> {
             <span class="ident">inner</span>: <span class="ident">CacheIndex</span>::<span class="ident">new</span>(<span class="ident">index_id</span>)<span class="question-mark">?</span>,
         })

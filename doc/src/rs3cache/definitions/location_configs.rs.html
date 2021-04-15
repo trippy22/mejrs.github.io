@@ -826,11 +826,44 @@
 <span id="823">823</span>
 <span id="824">824</span>
 <span id="825">825</span>
+<span id="826">826</span>
+<span id="827">827</span>
+<span id="828">828</span>
+<span id="829">829</span>
+<span id="830">830</span>
+<span id="831">831</span>
+<span id="832">832</span>
+<span id="833">833</span>
+<span id="834">834</span>
+<span id="835">835</span>
+<span id="836">836</span>
+<span id="837">837</span>
+<span id="838">838</span>
+<span id="839">839</span>
+<span id="840">840</span>
+<span id="841">841</span>
+<span id="842">842</span>
+<span id="843">843</span>
+<span id="844">844</span>
+<span id="845">845</span>
+<span id="846">846</span>
+<span id="847">847</span>
+<span id="848">848</span>
+<span id="849">849</span>
+<span id="850">850</span>
+<span id="851">851</span>
+<span id="852">852</span>
+<span id="853">853</span>
+<span id="854">854</span>
+<span id="855">855</span>
+<span id="856">856</span>
+<span id="857">857</span>
+<span id="858">858</span>
+<span id="859">859</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::{
     <span class="ident">cache</span>::{<span class="ident">buf</span>::<span class="ident">Buffer</span>, <span class="ident">index</span>::<span class="ident">CacheIndex</span>, <span class="ident">indextype</span>::<span class="ident">IndexType</span>},
     <span class="ident">structures</span>::<span class="ident">paramtable</span>::<span class="ident">ParamTable</span>,
-    <span class="ident">types</span>::<span class="ident">variables</span>::{<span class="ident">Varbit</span>, <span class="ident">Varp</span>, <span class="ident">VarpOrVarbit</span>},
     <span class="ident">utils</span>::{<span class="ident">error</span>::<span class="ident">CacheResult</span>, <span class="ident">par</span>::<span class="ident">ParApply</span>},
 };
 <span class="kw">use</span> <span class="ident">pyo3</span>::{<span class="ident">prelude</span>::<span class="kw-2">*</span>, <span class="ident">PyObjectProtocol</span>};
@@ -839,7 +872,6 @@
     <span class="ident">collections</span>::<span class="ident">HashMap</span>,
     <span class="ident">fs</span>::{<span class="self">self</span>, <span class="ident">File</span>},
     <span class="ident">io</span>::<span class="ident">Write</span>,
-    <span class="ident">iter</span>,
 };
 
 <span class="doccomment">/// Describes the properties of a given [`Location`](crate::definitions::locations::Location).</span>
@@ -1337,18 +1369,26 @@
     <span class="prelude-val">Ok</span>(())
 }
 
-<span class="kw">mod</span> <span class="ident">location_config_fields_impl</span> {
+<span class="doccomment">/// Defines the structs used as fields of [`LocationConfig`],</span>
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">location_config_fields</span> {
     <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
-    <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="kw">crate</span>::{
+        <span class="ident">cache</span>::<span class="ident">buf</span>::<span class="ident">Buffer</span>,
+        <span class="ident">types</span>::<span class="ident">variables</span>::{<span class="ident">Varbit</span>, <span class="ident">Varp</span>, <span class="ident">VarpOrVarbit</span>},
+    };
+    <span class="kw">use</span> <span class="ident">pyo3</span>::<span class="ident">prelude</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="ident">serde</span>::<span class="ident">Serialize</span>;
+    <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">collections</span>::<span class="ident">HashMap</span>, <span class="ident">iter</span>};
     <span class="doccomment">/// Contains an array of possible ids this location can morph into, controlled by either a varbit or varp.</span>
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">LocationMorphTable</span> {
         <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">flatten</span>)]</span>
         <span class="kw">pub</span> <span class="ident">var</span>: <span class="ident">VarpOrVarbit</span>,
+
         <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
+        <span class="doccomment">/// The possible ids this [`LocationConfig`](super::LocationConfig) can be.</span>
         <span class="kw">pub</span> <span class="ident">ids</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span><span class="op">&gt;</span>,
     }
 
@@ -1374,10 +1414,14 @@
         <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">flatten</span>)]</span>
         <span class="kw">pub</span> <span class="ident">var</span>: <span class="ident">VarpOrVarbit</span>,
+
+        <span class="doccomment">/// The possible ids this [`LocationConfig`](super::LocationConfig) can be.</span>
         <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">ids</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+
+        <span class="doccomment">/// This [`LocationConfig`](super::LocationConfig)&#39;s default id.</span>
         <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
-        <span class="kw">pub</span> <span class="ident">default_id</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>,
+        <span class="kw">pub</span> <span class="ident">default</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>,
     }
 
     <span class="kw">impl</span> <span class="ident">ExtendedLocationMorphTable</span> {
@@ -1388,18 +1432,19 @@
 
             <span class="kw">let</span> <span class="ident">var</span> <span class="op">=</span> <span class="ident">VarpOrVarbit</span>::<span class="ident">new</span>(<span class="ident">varp</span>, <span class="ident">varbit</span>);
 
-            <span class="kw">let</span> <span class="ident">default_id</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">read_smart32</span>();
+            <span class="kw">let</span> <span class="ident">default</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">read_smart32</span>();
 
             <span class="kw">let</span> <span class="ident">count</span> <span class="op">=</span> <span class="ident">buffer</span>.<span class="ident">read_unsigned_smart</span>() <span class="kw">as</span> <span class="ident">usize</span>;
 
             <span class="kw">let</span> <span class="ident">ids</span> <span class="op">=</span> <span class="ident">iter</span>::<span class="ident">repeat_with</span>(<span class="op">|</span><span class="op">|</span> <span class="ident">buffer</span>.<span class="ident">read_smart32</span>()).<span class="ident">take</span>(<span class="ident">count</span> <span class="op">+</span> <span class="number">1</span>).<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>();
-            <span class="self">Self</span> { <span class="ident">var</span>, <span class="ident">ids</span>, <span class="ident">default_id</span> }
+            <span class="self">Self</span> { <span class="ident">var</span>, <span class="ident">ids</span>, <span class="ident">default</span> }
         }
     }
 
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ColourReplacements</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">colours</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="ident">u16</span>, <span class="ident">u16</span>)<span class="op">&gt;</span>,
     }
 
@@ -1416,6 +1461,7 @@
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Models</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">models</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">i8</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
     }
 
@@ -1440,6 +1486,7 @@
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Textures</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">textures</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">u16</span>, <span class="ident">u16</span><span class="op">&gt;</span>,
     }
 
@@ -1456,9 +1503,16 @@
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Unknown79</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_1</span>: <span class="ident">u16</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_2</span>: <span class="ident">u16</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_3</span>: <span class="ident">u8</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">values</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>,
     }
 
@@ -1484,7 +1538,10 @@
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Unknown173</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_1</span>: <span class="ident">u16</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_2</span>: <span class="ident">u16</span>,
     }
 
@@ -1500,9 +1557,16 @@
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Unknown163</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_1</span>: <span class="ident">i8</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_2</span>: <span class="ident">i8</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_3</span>: <span class="ident">i8</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_4</span>: <span class="ident">i8</span>,
     }
 
@@ -1525,7 +1589,10 @@
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Unknown78</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_1</span>: <span class="ident">u16</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_2</span>: <span class="ident">u8</span>,
     }
 
@@ -1541,6 +1608,7 @@
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Unknown160</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">values</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span>,
     }
 
@@ -1555,11 +1623,22 @@
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Unknown201</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_1</span>: <span class="ident">u16</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_2</span>: <span class="ident">u16</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_3</span>: <span class="ident">u16</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_4</span>: <span class="ident">u16</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_5</span>: <span class="ident">u16</span>,
+
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">unknown_6</span>: <span class="ident">u16</span>,
     }
 
@@ -1586,6 +1665,7 @@
     <span class="attribute">#[<span class="ident">pyclass</span>]</span>
     <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
     <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">HeadModels</span> {
+        <span class="attribute">#[<span class="ident">pyo3</span>(<span class="ident">get</span>)]</span>
         <span class="kw">pub</span> <span class="ident">headmodels</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span>, <span class="ident">u8</span>)<span class="op">&gt;</span>,
     }
 
@@ -1598,21 +1678,9 @@
             <span class="ident">HeadModels</span> { <span class="ident">headmodels</span> }
         }
     }
-
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">RecolourPalette</span> {}
-
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">OldCursors</span> {}
-
-    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>)]</span>
-    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Unknown181</span> {}
 }
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">location_config_fields_impl</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">location_config_fields</span>::<span class="kw-2">*</span>;
 
 <span class="doccomment">/// Save the location configs as `location_configs.json`. Exposed as `--dump location_configs`.</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">export</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CacheResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {

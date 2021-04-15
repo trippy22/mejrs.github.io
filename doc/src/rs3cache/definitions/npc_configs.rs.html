@@ -774,6 +774,7 @@
 <span id="771">771</span>
 <span id="772">772</span>
 <span id="773">773</span>
+<span id="774">774</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::{
     <span class="ident">cache</span>::{<span class="ident">buf</span>::<span class="ident">Buffer</span>, <span class="ident">index</span>::<span class="ident">CacheIndex</span>, <span class="ident">indextype</span>::<span class="ident">IndexType</span>},
@@ -1045,7 +1046,7 @@
                 <span class="ident">archive</span>
                     .<span class="ident">take_files</span>()
                     .<span class="ident">into_iter</span>()
-                    .<span class="ident">map</span>(<span class="kw">move</span> <span class="op">|</span>(<span class="ident">file_id</span>, <span class="ident">file</span>)<span class="op">|</span> (<span class="ident">archive_id</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">8</span> <span class="op">|</span> <span class="ident">file_id</span>, <span class="ident">file</span>))
+                    .<span class="ident">map</span>(<span class="kw">move</span> <span class="op">|</span>(<span class="ident">file_id</span>, <span class="ident">file</span>)<span class="op">|</span> (<span class="ident">archive_id</span> <span class="op">&lt;</span><span class="op">&lt;</span> <span class="number">7</span> <span class="op">|</span> <span class="ident">file_id</span>, <span class="ident">file</span>))
             })
             .<span class="ident">map</span>(<span class="op">|</span>(<span class="ident">id</span>, <span class="ident">file</span>)<span class="op">|</span> (<span class="ident">id</span>, <span class="self">Self</span>::<span class="ident">deserialize</span>(<span class="ident">id</span>, <span class="ident">file</span>)))
             .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">u32</span>, <span class="self">Self</span><span class="op">&gt;</span><span class="op">&gt;</span>();
@@ -1157,7 +1158,8 @@
     }
 }
 
-<span class="kw">mod</span> <span class="ident">npc_config_fields_impl</span> {
+<span class="doccomment">/// Defines the structs used as fields of [`NpcConfig`],</span>
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">npc_config_fields</span> {
     <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
 
     <span class="kw">use</span> <span class="kw">crate</span>::{
@@ -1515,7 +1517,7 @@
     }
 }
 
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">npc_config_fields_impl</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">npc_config_fields</span>::<span class="kw-2">*</span>;
 
 <span class="doccomment">/// Save the npc configs as `npc_configs.json`. Exposed as `--dump npc_configs`.</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">export</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">CacheResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
